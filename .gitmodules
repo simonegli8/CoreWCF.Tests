@@ -1,0 +1,3 @@
+[submodule "CoreWCF"]
+	path = CoreWCF
+	url = https://github.com/CoreWCF/CoreWCF
