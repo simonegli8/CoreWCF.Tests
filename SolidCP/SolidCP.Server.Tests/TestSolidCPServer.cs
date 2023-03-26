@@ -7,7 +7,7 @@ namespace SolidCP.Server.Tests
     using System.ServiceModel;
 
     [TestClass]
-    public class Test_SolidCP_Server
+    public class TestSolidCPServer
     {
 
         static readonly object Lock = new object();
