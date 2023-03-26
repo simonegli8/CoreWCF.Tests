@@ -104,7 +104,7 @@ namespace SolidCP.Server.Tests
 
                     // test method with soap header
                     var settings = client.EchoSettings();
-                    Assert.AreEqual(((ServiceProviderSettingsSoapHeader)client.SoapHeader).Settings[0], settings[0]);
+                    Assert.AreEqual(((ServiceProviderSettingsSoapHeader)client.SoapHeader).Settings[0], settings);
 
                 }
                 catch (Exception ex)
