@@ -1,6 +1,6 @@
 # About CoreWCF.Test
 
-[![Introduction Video](http://mqdefault.jpg)](https://youtube.com/live/dQghJYd2AEM)
+[![Introduction Video](mqdefault.jpg)](https://youtube.com/live/dQghJYd2AEM)
 
 This repository contains unit tests from the SolidCP control panel that runs web services in the project SolidCP.Server.
 The web services in SolidCP.Server are still in the WSE3 style with asmx files. From those services, WCF services and
