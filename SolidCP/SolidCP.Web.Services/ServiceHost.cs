@@ -103,7 +103,7 @@ After:
 						}
 						else AddEndpoint(contract, new WSHttpBinding(SecurityMode.None) { Name = "ws.none" }, adr);
 					}
-					else // use wsHttp as default for authenticated services and netHttp for anonymous services
+					else
 					{
 						if (isAuthenticated)
 						{
@@ -120,27 +120,54 @@ After:
 				{
 					if (HasApi(adr, "basic"))
 					{
-						var binding = new BasicHttpBinding(BasicHttpSecurityMode.TransportWithMessageCredential);
-						binding.Security.Message.ClientCredentialType = BasicHttpMessageCredentialType.UserName;
-						binding.Security.Transport.ClientCredentialType = HttpClientCredentialType.None;
-						binding.Name = "basic.transportwithmessage";
-						AddEndpoint(contract, binding, adr);
+						if (isAuthenticated)
+						{
+							var binding = new BasicHttpBinding(BasicHttpSecurityMode.TransportWithMessageCredential);
+							binding.Security.Message.ClientCredentialType = BasicHttpMessageCredentialType.UserName;
+							binding.Security.Transport.ClientCredentialType = HttpClientCredentialType.None;
+							binding.Name = "basic.transportwithmessage";
+							AddEndpoint(contract, binding, adr);
+						} else
+						{
+							var binding = new BasicHttpBinding(BasicHttpSecurityMode.Transport);
+                            binding.Security.Transport.ClientCredentialType = HttpClientCredentialType.None;
+                            binding.Name = "basic.transport";
+							AddEndpoint(contract, binding, adr);
+						}
 					}
 					else if (HasApi(adr, "ws")) {
-						var binding = new WSHttpBinding(SecurityMode.TransportWithMessageCredential);
-						binding.Security.Message.ClientCredentialType = MessageCredentialType.UserName;
-						binding.Security.Transport.ClientCredentialType = HttpClientCredentialType.None;
-						binding.Name = "ws.transportwithmessage";
-						AddEndpoint(contract, binding, adr);
-					}
+						if (isAuthenticated)
+						{
+							var binding = new WSHttpBinding(SecurityMode.TransportWithMessageCredential);
+							binding.Security.Message.ClientCredentialType = MessageCredentialType.UserName;
+							binding.Security.Transport.ClientCredentialType = HttpClientCredentialType.None;
+							binding.Name = "ws.transportwithmessage";
+							AddEndpoint(contract, binding, adr);
+						} else
+						{
+                            var binding = new WSHttpBinding(SecurityMode.Transport);
+                            binding.Security.Transport.ClientCredentialType = HttpClientCredentialType.None;
+                            binding.Name = "ws.transportwithmessage";
+                            AddEndpoint(contract, binding, adr);
+                        }
+                    }
 					else if (HasApi(adr, "net"))
 					{
-						var binding = new NetHttpBinding(BasicHttpSecurityMode.TransportWithMessageCredential);
-						binding.Security.Message.ClientCredentialType = BasicHttpMessageCredentialType.UserName;
-						binding.Security.Transport.ClientCredentialType = HttpClientCredentialType.None;
-						binding.Name = "net.transportwithmessage";
-						AddEndpoint(contract, binding, adr);
-					}
+						if (isAuthenticated)
+						{
+							var binding = new NetHttpBinding(BasicHttpSecurityMode.TransportWithMessageCredential);
+							binding.Security.Message.ClientCredentialType = BasicHttpMessageCredentialType.UserName;
+							binding.Security.Transport.ClientCredentialType = HttpClientCredentialType.None;
+							binding.Name = "net.transportwithmessage";
+							AddEndpoint(contract, binding, adr);
+						} else
+						{
+                            var binding = new NetHttpBinding(BasicHttpSecurityMode.Transport);
+                            binding.Security.Transport.ClientCredentialType = HttpClientCredentialType.None;
+                            binding.Name = "net.transport";
+                            AddEndpoint(contract, binding, adr);
+                        }
+                    }
 				}
 				else if (adr.StartsWith("net.tcp://"))
 				{

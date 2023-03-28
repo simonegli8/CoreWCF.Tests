@@ -13,7 +13,7 @@ namespace SolidCP.Server.Tests
         static readonly object Lock = new object();
         static Kestrel? KestrelServer = null;
         static IISExpress? IISExpressServer = null;
-        public TestContext TestContext { get; set; }
+        public TestContext? TestContext { get; set; }
 
         [ClassInitialize]
         public static void InitTest(TestContext context)

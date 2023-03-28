@@ -244,10 +244,17 @@ namespace SolidCP.Web.Client
 							else binding = new BasicHttpBinding(BasicHttpSecurityMode.None);
 							break;
 						case Protocols.BasicHttps: 
-							var basics = new BasicHttpBinding(BasicHttpSecurityMode.TransportWithMessageCredential);
-							basics.Security.Message.ClientCredentialType = BasicHttpMessageCredentialType.UserName;
-							binding = basics;
-							break;
+							if (isAuthenticated)
+							{
+								var basics = new BasicHttpBinding(BasicHttpSecurityMode.TransportWithMessageCredential);
+								basics.Security.Message.ClientCredentialType = BasicHttpMessageCredentialType.UserName;
+								binding = basics;
+							} else
+							{
+                                var basics = new BasicHttpBinding(BasicHttpSecurityMode.Transport);
+                                binding = basics;
+                            }
+                            break;
 						case Protocols.NetHttp:
 							if (isAuthenticated)
 							{
@@ -258,10 +265,18 @@ namespace SolidCP.Web.Client
 							} else binding = new NetHttpBinding(BasicHttpSecurityMode.None);
 							break;
 						case Protocols.NetHttps: 
-							var nets = new NetHttpBinding(BasicHttpSecurityMode.TransportWithMessageCredential);
-							nets.Security.Message.ClientCredentialType = BasicHttpMessageCredentialType.UserName;
-							binding = nets;
-							break;
+							if (isAuthenticated)
+							{
+								var nets = new NetHttpBinding(BasicHttpSecurityMode.TransportWithMessageCredential);
+								nets.Security.Message.ClientCredentialType = BasicHttpMessageCredentialType.UserName;
+								binding = nets;
+                            } else
+							{
+                                var nets = new NetHttpBinding(BasicHttpSecurityMode.Transport);
+                                binding = nets;
+                            }
+
+                            break;
 						case Protocols.WSHttp:
 							if (isAuthenticated)
 							{
@@ -273,11 +288,19 @@ namespace SolidCP.Web.Client
 							else binding = new WSHttpBinding(SecurityMode.None);
 							break;
 						case Protocols.WSHttps: 
-							var wss = new WSHttpBinding(SecurityMode.TransportWithMessageCredential);
-							wss.Security.Message.ClientCredentialType = MessageCredentialType.UserName;
-							binding = wss;
-							break;
+							if (isAuthenticated)
+							{
+								var wss = new WSHttpBinding(SecurityMode.TransportWithMessageCredential);
+								wss.Security.Message.ClientCredentialType = MessageCredentialType.UserName;
+								binding = wss;
+							} else
+							{
+                                var wss = new WSHttpBinding(SecurityMode.Transport);
+                                binding = wss;
+                            }
+                            break;
 						case Protocols.NetTcp:
+						case Protocols.NetTcpSsl:
 							if (isAuthenticated)
 							{
 								var nettcp = new NetTcpBinding(SecurityMode.TransportWithMessageCredential);
@@ -285,11 +308,6 @@ namespace SolidCP.Web.Client
 								binding = nettcp;
 							}
 							else binding = new NetTcpBinding(SecurityMode.None);
-							break;
-						case Protocols.NetTcpSsl: 
-							var nettcps = new NetTcpBinding(SecurityMode.TransportWithMessageCredential);
-							nettcps.Security.Message.ClientCredentialType = MessageCredentialType.UserName;
-							binding = nettcps;
 							break;
 #if NETFRAMEWORK
 						case Protocols.NetPipe: 
