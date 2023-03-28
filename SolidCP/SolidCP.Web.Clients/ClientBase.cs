@@ -355,7 +355,7 @@ namespace SolidCP.Web.Client
 				{
 					// TODO soap header & username credentials
 
-					throw new NotSupportedException("Grpc is not supported.");
+					throw new NotSupportedException("gRPC is not supported.");
 
 					GrpcChannel gchannel;
 					if (!GrpcPool.TryGetValue(url, out gchannel))
