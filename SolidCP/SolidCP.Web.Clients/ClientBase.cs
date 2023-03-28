@@ -7,9 +7,9 @@ using System.ServiceModel.Channels;
 using System.Threading.Tasks;
 using System.Linq;
 using System.Reflection;
+#if !NETFRAMEWORK
 using Grpc.Core;
 using Grpc.Core.Interceptors;
-#if NETCOREAPP
 using ProtoBuf.Grpc.Client;
 using Grpc.Net.Client;
 #endif
