@@ -169,8 +169,10 @@ namespace SolidCP.Web.Client
 		ChannelFactory<T> factory;
 
 		T client = null;
+		UserNamePasswordCredentials clientCredentials;
 
-		protected T Client
+
+        protected T Client
 		{
 			get
 			{
@@ -207,11 +209,15 @@ namespace SolidCP.Web.Client
 				}
 				*/
 
+				// TODO set the credentials on client
                 if (client != null)
 				{
 					if (client is IClientChannel chan)
 					{
-						if (chan.RemoteAddress.Uri.AbsoluteUri != serviceurl)
+						// reuse client if it uses the same address and credentials
+						if (chan.RemoteAddress.Uri.AbsoluteUri != serviceurl ||
+							((Credentials != null) != (clientCredentials != null)) ||
+							Credentials != null && (Credentials.UserName != clientCredentials.UserName || Credentials.Password != clientCredentials.Password))
 						{
 							client = null;
 						}
@@ -346,7 +352,9 @@ namespace SolidCP.Web.Client
 					{
 						factory.Credentials.UserName.UserName = Credentials.UserName ?? "_";
 						factory.Credentials.UserName.Password = Credentials.Password ?? string.Empty;
+						clientCredentials = new UserNamePasswordCredentials { UserName = Credentials.UserName, Password = Credentials.Password };
 					}
+					else clientCredentials = null;
 					client = factory.CreateChannel();
 					((IClientChannel)client).OperationTimeout = Timeout ?? TimeSpan.FromSeconds(120);
 				}
