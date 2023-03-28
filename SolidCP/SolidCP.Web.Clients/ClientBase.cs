@@ -7,6 +7,8 @@ using System.ServiceModel.Channels;
 using System.Threading.Tasks;
 using System.Linq;
 using System.Reflection;
+using Grpc.Core;
+using Grpc.Core.Interceptors;
 #if NETCOREAPP
 using ProtoBuf.Grpc.Client;
 using Grpc.Net.Client;
@@ -351,6 +353,10 @@ namespace SolidCP.Web.Client
 #if !NETFRAMEWORK
 				else if (IsGRPC)
 				{
+					// TODO soap header & username credentials
+
+					throw new NotSupportedException("Grpc is not supported.");
+
 					GrpcChannel gchannel;
 					if (!GrpcPool.TryGetValue(url, out gchannel))
 					{
