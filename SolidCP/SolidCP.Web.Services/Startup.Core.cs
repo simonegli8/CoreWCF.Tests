@@ -132,7 +132,7 @@ namespace SolidCP.Web.Services
 		{
 			app.UseServiceModel(builder =>
 			{
-				var webServices = StartupFX.GetWebServices()
+				var webServices = StartupNetFX.GetWebServices()
 					.Select(ws => new
 					{
 						Service = ws,

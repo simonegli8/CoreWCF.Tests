@@ -18,7 +18,7 @@ using System.ComponentModel;
 //[assembly: PreApplicationStartMethod(typeof(SolidCP.Web.Services.StartupFX), "Start")]
 namespace SolidCP.Web.Services
 {
-	public static class StartupFX
+	public static class StartupNetFX
 	{
 
 		public static Assembly[] ServiceAssemblies { get; set; }
