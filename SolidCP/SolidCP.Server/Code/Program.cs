@@ -20,7 +20,7 @@ namespace SolidCP.Server
 		{
 			//if (!Debugger.IsAttached) Debugger.Launch();
 			PasswordValidator.Init();
-			SolidCP.Web.Services.CoreWebServicesApp.Init(args);
+			SolidCP.Web.Services.StartupCore.Init(args);
 		}
 	}
 }

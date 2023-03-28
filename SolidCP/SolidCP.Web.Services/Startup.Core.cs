@@ -28,7 +28,7 @@ using System.Runtime.Intrinsics.X86;
 
 namespace SolidCP.Web.Services
 {
-    public static class CoreWebServicesApp
+    public static class StartupCore
 	{
 		public static int? HttpPort = null;
 		public static int? HttpsPort = null;
