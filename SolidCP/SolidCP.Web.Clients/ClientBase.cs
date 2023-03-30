@@ -348,7 +348,7 @@ namespace SolidCP.Web.Client
 						}
 						factory.Endpoint.EndpointBehaviors.Add(new SoapHeaderClientBehavior() { Client = this });
 					}
-					if (Credentials != null && Credentials.Password != null || IsSsl)
+					if (Credentials != null && Credentials.Password != null && IsSsl)
 					{
 						factory.Credentials.UserName.UserName = Credentials.UserName ?? "_";
 						factory.Credentials.UserName.Password = Credentials.Password ?? string.Empty;

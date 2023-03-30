@@ -41,6 +41,7 @@ namespace SolidCP.Server.Tests
         [DataRow(Protocols.BasicHttps)]
         [DataRow(Protocols.WSHttps)]
         [DataRow(Protocols.NetHttps)]
+
         public void AnonymousNet6(Protocols protocol)
         {
             using (var client = new Test() { Url = "https://localhost:9007" })
@@ -48,6 +49,27 @@ namespace SolidCP.Server.Tests
                 try
                 {
                     client.Protocol = protocol;
+                    var msg = client.Echo("Hello");
+                    Assert.AreEqual("Hello", msg);
+                }
+                catch (FaultException fex)
+                {
+                    TestContext.WriteLine($"Fault: {fex};{fex.InnerException}");
+                }
+                catch (Exception ex)
+                {
+                    throw;
+                    Assert.Fail("Exception", ex);
+                }
+            }
+        }
+        [TestMethod]
+        public void AnonymousNetTcp()
+        {
+            using (var client = new Test() { Url = "net.tcp://localhost:9020" })
+            {
+                try
+                {
                     var msg = client.Echo("Hello");
                     Assert.AreEqual("Hello", msg);
                 }
