@@ -9,9 +9,9 @@
 - When prompted for the debugger to launch you choose the working visual studio instance in order to start debugging on CoreWCF & SolidCP.Server.
 
 ## Bugs:
-The tests AnonymousNet6 fail for NetHttp binding, and the AuthenticatedNet6 that uses SoapHeaders implemented with a custom MessageInspector and UsernamePassword validation fails for all bindings.
+The tests **AnonymousNet6** fail for NetHttp binding, and the **AuthenticatedNet6** that uses SoapHeaders implemented with a custom MessageInspector and UsernamePassword validation fails for all bindings.
 
-### The stack trace for AnonymousNet6 you get in Kestrel is this:
+### The stack trace for **AnonymousNet6** you get in Kestrel is this:
 
       Request starting HTTP/1.1 POST https://localhost:9007/net/Test application/soap+msbin1 161
       fail: Microsoft.AspNetCore.Server.Kestrel[13]
@@ -25,7 +25,7 @@ The tests AnonymousNet6 fail for NetHttp binding, and the AuthenticatedNet6 that
       Request finished HTTP/1.1 POST https://localhost:9007/net/Test application/soap+msbin1 161 - 500 0 - 1789.7733ms
 
 
-### The stack trace you get for AuthenticatedNet6 BasicHttpBinding is:
+### The stack trace you get for **AuthenticatedNet6** BasicHttpBinding is:
 
      Request starting HTTP/1.1 POST https://localhost:9007/basic/TestWithAuthentication text/xml;+charset=utf-8 1436
      info: Microsoft.AspNetCore.Server.Kestrel.Connections[34]
@@ -54,7 +54,7 @@ The tests AnonymousNet6 fail for NetHttp binding, and the AuthenticatedNet6 that
       Request finished HTTP/1.1 POST https://localhost:9007/basic/TestWithAuthentication text/xml;+charset=utf-8 1436 - 0 - - 1286.7635ms
 
 
-### For AuthenticatedNet6 with NetHttpBinding you get stack trace:
+### For **AuthenticatedNet6** with NetHttpBinding you get stack trace:
 
       Request starting HTTP/1.1 POST https://localhost:9007/net/TestWithAuthentication application/soap+msbin1 970
       fail: Microsoft.AspNetCore.Server.Kestrel[13]
@@ -68,7 +68,7 @@ The tests AnonymousNet6 fail for NetHttp binding, and the AuthenticatedNet6 that
       Request finished HTTP/1.1 POST https://localhost:9007/net/TestWithAuthentication application/soap+msbin1 970 - 500 0 - 2.5982ms
 
 
-### For AuthenticatedNet6 WSHttpBinding you get:
+### For **AuthenticatedNet6** WSHttpBinding you get:
 
       Request starting HTTP/1.1 POST https://localhost:9007/ws/TestWithAuthentication application/soap+xml;+charset=utf-8 1633
       fail: Microsoft.AspNetCore.Server.Kestrel[13]
