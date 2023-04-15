@@ -117,7 +117,7 @@ instead of just
       {
         "applicationUrls": "https://localhost:9007"
 
-If you also setup NetTcp endpoints, Kestrel gives an Exception before any incoming WCF request, with the following stack trace:
+If you also setup NetTcp endpoints like this, Kestrel gives an Exception before any incoming WCF request, with the following stack trace:
 
       Request starting HTTP/1.1 GET https://localhost:9007/ - -
       info: CoreWCF.Channels.MetadataMiddleware[0]
