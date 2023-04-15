@@ -13,23 +13,23 @@ The tests AnonymousNet6 fail for NetHttp binding, and the AuthenticatedNet6 that
 ### The stack trace for AnonymousNet6 you get in Kestrel is this:
 
       Request starting HTTP/1.1 POST https://localhost:9007/net/Test application/soap+msbin1 161
-fail: Microsoft.AspNetCore.Server.Kestrel[13]
+      fail: Microsoft.AspNetCore.Server.Kestrel[13]
       Connection id "0HMPHB5RGV4OU", Request id "0HMPHB5RGV4OU:00000002": An unhandled exception was thrown by the application.
       System.NullReferenceException: Object reference not set to an instance of an object.
          at CoreWCF.Channels.RequestDelegateHandler.HandleRequest(HttpContext context) in C:\GitHub\CoreWCF.Tests\CoreWCF\src\CoreWCF.Http\src\CoreWCF\Channels\RequestDelegateHandler.cs:line 121
          at CoreWCF.Channels.ServiceModelHttpMiddleware.InvokeAsync(HttpContext context) in C:\GitHub\CoreWCF.Tests\CoreWCF\src\CoreWCF.Http\src\CoreWCF\Channels\ServiceModelHttpMiddleware.cs:line 49
          at CoreWCF.Channels.MetadataMiddleware.InvokeAsync(HttpContext context) in C:\GitHub\CoreWCF.Tests\CoreWCF\src\CoreWCF.Primitives\src\CoreWCF\Channels\MetadataMiddleware.cs:line 53
          at Microsoft.AspNetCore.Server.Kestrel.Core.Internal.Http.HttpProtocol.ProcessRequests[TContext](IHttpApplication`1 application)
-info: Microsoft.AspNetCore.Hosting.Diagnostics[2]
+      info: Microsoft.AspNetCore.Hosting.Diagnostics[2]
       Request finished HTTP/1.1 POST https://localhost:9007/net/Test application/soap+msbin1 161 - 500 0 - 1789.7733ms
 
 
 ### The stack trace you get for AuthenticatedNet6 BasicHttpBinding is:
 
      Request starting HTTP/1.1 POST https://localhost:9007/basic/TestWithAuthentication text/xml;+charset=utf-8 1436
-info: Microsoft.AspNetCore.Server.Kestrel.Connections[34]
+     info: Microsoft.AspNetCore.Server.Kestrel.Connections[34]
       Connection id "0HMPHB5RGV4P0", Request id "0HMPHB5RGV4P0:00000002": the application aborted the connection.
-fail: Microsoft.AspNetCore.Server.Kestrel[13]
+     fail: Microsoft.AspNetCore.Server.Kestrel[13]
       Connection id "0HMPHB5RGV4P0", Request id "0HMPHB5RGV4P0:00000002": An unhandled exception was thrown by the application.
       CoreWCF.Security.MessageSecurityException: Cannot find a token authenticator for the 'CoreWCF.IdentityModel.Tokens.UserNameSecurityToken' token type. Tokens of that type cannot be accepted according to current security settings.
          at CoreWCF.Security.ReceiveSecurityHeader.ReadTokenAsync(XmlReader reader, SecurityTokenResolver tokenResolver, IList`1 allowedTokenAuthenticators) in C:\GitHub\CoreWCF.Tests\CoreWCF\src\CoreWCF.Primitives\src\CoreWCF\Security\ReceiveSecurityHeader.cs:line 1631
@@ -49,28 +49,28 @@ fail: Microsoft.AspNetCore.Server.Kestrel[13]
          at CoreWCF.Channels.ServiceModelHttpMiddleware.InvokeAsync(HttpContext context) in C:\GitHub\CoreWCF.Tests\CoreWCF\src\CoreWCF.Http\src\CoreWCF\Channels\ServiceModelHttpMiddleware.cs:line 49
          at CoreWCF.Channels.MetadataMiddleware.InvokeAsync(HttpContext context) in C:\GitHub\CoreWCF.Tests\CoreWCF\src\CoreWCF.Primitives\src\CoreWCF\Channels\MetadataMiddleware.cs:line 53
          at Microsoft.AspNetCore.Server.Kestrel.Core.Internal.Http.HttpProtocol.ProcessRequests[TContext](IHttpApplication`1 application)
-info: Microsoft.AspNetCore.Hosting.Diagnostics[2]
+      info: Microsoft.AspNetCore.Hosting.Diagnostics[2]
       Request finished HTTP/1.1 POST https://localhost:9007/basic/TestWithAuthentication text/xml;+charset=utf-8 1436 - 0 - - 1286.7635ms
 
 
 ### For AuthenticatedNet6 with NetHttpBinding you get stack trace:
 
       Request starting HTTP/1.1 POST https://localhost:9007/net/TestWithAuthentication application/soap+msbin1 970
-fail: Microsoft.AspNetCore.Server.Kestrel[13]
+      fail: Microsoft.AspNetCore.Server.Kestrel[13]
       Connection id "0HMPHB5RGV4P2", Request id "0HMPHB5RGV4P2:00000002": An unhandled exception was thrown by the application.
       System.NullReferenceException: Object reference not set to an instance of an object.
          at CoreWCF.Channels.RequestDelegateHandler.HandleRequest(HttpContext context) in C:\GitHub\CoreWCF.Tests\CoreWCF\src\CoreWCF.Http\src\CoreWCF\Channels\RequestDelegateHandler.cs:line 121
          at CoreWCF.Channels.ServiceModelHttpMiddleware.InvokeAsync(HttpContext context) in C:\GitHub\CoreWCF.Tests\CoreWCF\src\CoreWCF.Http\src\CoreWCF\Channels\ServiceModelHttpMiddleware.cs:line 49
          at CoreWCF.Channels.MetadataMiddleware.InvokeAsync(HttpContext context) in C:\GitHub\CoreWCF.Tests\CoreWCF\src\CoreWCF.Primitives\src\CoreWCF\Channels\MetadataMiddleware.cs:line 53
          at Microsoft.AspNetCore.Server.Kestrel.Core.Internal.Http.HttpProtocol.ProcessRequests[TContext](IHttpApplication`1 application)
-info: Microsoft.AspNetCore.Hosting.Diagnostics[2]
+      info: Microsoft.AspNetCore.Hosting.Diagnostics[2]
       Request finished HTTP/1.1 POST https://localhost:9007/net/TestWithAuthentication application/soap+msbin1 970 - 500 0 - 2.5982ms
 
 
 ### For AuthenticatedNet6 WSHttpBinding you get:
 
       Request starting HTTP/1.1 POST https://localhost:9007/ws/TestWithAuthentication application/soap+xml;+charset=utf-8 1633
-fail: Microsoft.AspNetCore.Server.Kestrel[13]
+      fail: Microsoft.AspNetCore.Server.Kestrel[13]
       Connection id "0HMPHB5RGV4P4", Request id "0HMPHB5RGV4P4:00000002": An unhandled exception was thrown by the application.
       CoreWCF.Security.MessageSecurityException: Cannot find a token authenticator for the 'CoreWCF.IdentityModel.Tokens.UserNameSecurityToken' token type. Tokens of that type cannot be accepted according to current security settings.
          at CoreWCF.Security.ReceiveSecurityHeader.ReadTokenAsync(XmlReader reader, SecurityTokenResolver tokenResolver, IList`1 allowedTokenAuthenticators) in C:\GitHub\CoreWCF.Tests\CoreWCF\src\CoreWCF.Primitives\src\CoreWCF\Security\ReceiveSecurityHeader.cs:line 1631
@@ -90,7 +90,7 @@ fail: Microsoft.AspNetCore.Server.Kestrel[13]
          at CoreWCF.Channels.ServiceModelHttpMiddleware.InvokeAsync(HttpContext context) in C:\GitHub\CoreWCF.Tests\CoreWCF\src\CoreWCF.Http\src\CoreWCF\Channels\ServiceModelHttpMiddleware.cs:line 49
          at CoreWCF.Channels.MetadataMiddleware.InvokeAsync(HttpContext context) in C:\GitHub\CoreWCF.Tests\CoreWCF\src\CoreWCF.Primitives\src\CoreWCF\Channels\MetadataMiddleware.cs:line 53
          at Microsoft.AspNetCore.Server.Kestrel.Core.Internal.Http.HttpProtocol.ProcessRequests[TContext](IHttpApplication`1 application)
-info: Microsoft.AspNetCore.Hosting.Diagnostics[2]
+      info: Microsoft.AspNetCore.Hosting.Diagnostics[2]
       Request finished HTTP/1.1 POST https://localhost:9007/ws/TestWithAuthentication application/soap+xml;+charset=utf-8 1633 - 500 576 application/soap+xml;+charset=utf-8 217.8012ms
 
 
@@ -99,32 +99,33 @@ info: Microsoft.AspNetCore.Hosting.Diagnostics[2]
 
 Another failure you get if you modify the appsettings.json in SolidCP.Server and add a listening url for net.tcp like this
 
-{
-  "applicationUrls": "https://localhost:9007;net.tcp://localhost:9020",
-  "ServerCertificate": {
-    "StoreLocation": "LocalMachine",
-    "StoreName": "My",
-    "FindType": "FindBySubjectName",
-    "Name":  "localhost"
-  }
-}
+      {
+        "applicationUrls": "https://localhost:9007;net.tcp://localhost:9020",
+        "ServerCertificate": {
+          "StoreLocation": "LocalMachine",
+          "StoreName": "My",
+          "FindType": "FindBySubjectName",
+          "Name":  "localhost"
+        }
+      }
+
 instead of just
 
-{
-  "applicationUrls": "https://localhost:9007"
+      {
+        "applicationUrls": "https://localhost:9007"
 
 If you also setup NetTcp endpoints, Kestrel gives an Exception before any incoming WCF request, with the following stack trace:
 
       Request starting HTTP/1.1 GET https://localhost:9007/ - -
-info: CoreWCF.Channels.MetadataMiddleware[0]
+      info: CoreWCF.Channels.MetadataMiddleware[0]
       Configuring metadata to /AutoDiscovery
-info: CoreWCF.Channels.MetadataMiddleware[0]
+      info: CoreWCF.Channels.MetadataMiddleware[0]
       Configuring metadata to /BlackBerry
-info: CoreWCF.Channels.MetadataMiddleware[0]
+      info: CoreWCF.Channels.MetadataMiddleware[0]
       Configuring metadata to /CRM
-info: CoreWCF.Channels.MetadataMiddleware[0]
+      info: CoreWCF.Channels.MetadataMiddleware[0]
       Configuring metadata to /DatabaseServer
-fail: Microsoft.AspNetCore.Server.Kestrel[13]
+      fail: Microsoft.AspNetCore.Server.Kestrel[13]
       Connection id "0HMPHBFGMT519", Request id "0HMPHBFGMT519:00000002": An unhandled exception was thrown by the application.
       CoreWCF.CommunicationObjectFaultedException: The communication object, CoreWCF.Configuration.ServiceBuilder, cannot be used for communication because it is in the Faulted state.
          at CoreWCF.Channels.CommunicationObject.ThrowIfDisposedOrNotOpen() in C:\GitHub\CoreWCF.Tests\CoreWCF\src\CoreWCF.Primitives\src\CoreWCF\Channels\CommunicationObject.cs:line 728
@@ -149,7 +150,7 @@ fail: Microsoft.AspNetCore.Server.Kestrel[13]
          at CoreWCF.Channels.MetadataMiddleware.BuildBranchAndInvoke(HttpContext request) in C:\GitHub\CoreWCF.Tests\CoreWCF\src\CoreWCF.Primitives\src\CoreWCF\Channels\MetadataMiddleware.cs:line 58
          at CoreWCF.Channels.MetadataMiddleware.InvokeAsync(HttpContext context) in C:\GitHub\CoreWCF.Tests\CoreWCF\src\CoreWCF.Primitives\src\CoreWCF\Channels\MetadataMiddleware.cs:line 53
          at Microsoft.AspNetCore.Server.Kestrel.Core.Internal.Http.HttpProtocol.ProcessRequests[TContext](IHttpApplication`1 application)
-info: Microsoft.AspNetCore.Hosting.Diagnostics[2]
+      info: Microsoft.AspNetCore.Hosting.Diagnostics[2]
       Request finished HTTP/1.1 GET https://localhost:9007/ - - - 500 0 - 1881.8673ms
 
 
