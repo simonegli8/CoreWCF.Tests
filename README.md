@@ -1,5 +1,7 @@
 # About CoreWCF.Test
 
+This repository contains unit tests to reproduce bugs in CoreWCF.
+
 ## The steps to reproduce the errors: 
 
 - Build the solution in Visual Studio.
