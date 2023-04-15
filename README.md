@@ -2,9 +2,10 @@
 
 ## The steps to reproduce the errors: 
 
-- Build the solution.
+- Build the solution in Visual Studio.
 - Open Test Explorer.
 - Run all the Tests in SolidCP.Server.Tests.
+  The tests will open an instance of IISExpress running SolidCP.Server under .NET Framework 4.8 and an instance of Kestrel running SolidCP.Server under .NET 6.
 - When prompted for the debugger to launch you choose the working visual studio instance in order to start debugging on CoreWCF & SolidCP.Server.
 
 ## Bugs:
