@@ -4,6 +4,7 @@ This repository contains unit tests to reproduce bugs in CoreWCF.
 
 ## The steps to reproduce the errors: 
 
+- Checkout the CoreWCF.Tests repository, including the CoreWCF submodule.
 - Build the solution in Visual Studio.
 - Open Test Explorer.
 - Run all the Tests in SolidCP.Server.Tests.
